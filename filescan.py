@@ -24,9 +24,11 @@ def getfilelist(self):
     o = open(self + "_details", "w+")
     o.writelines(files_indir)
     o.close()
-    return file_list
+   # return file_list
+    return set(file_list)
 def path_cmp(path1,path2):
     result = []
+    result_details = []
     path1_list = getfilelist(path1)
     path2_list = getfilelist(path2)
     for item in path1_list:
@@ -35,4 +37,10 @@ def path_cmp(path1,path2):
     o=open("path_cmp", "w+")
     o.writelines(result)
     o.close()
+    for root, dirs, files in os.walk(path1):
+        for ifile in result:
+             result_details.append(os.path.join(root, ifile) + '\n')
+    o1 =open("path_cmp_details", "w+")
+    o1.writelines(result_details)
+    o1.close()
 path_cmp(dirpath1,dirpath2)
