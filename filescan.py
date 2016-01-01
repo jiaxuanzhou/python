@@ -2,13 +2,8 @@
 import sys, os, string
 reload(sys)
 sys.setdefaultencoding('utf8')
-print "zhoujiaxuan"
-#dirpath = "/home/zjx/Ö¼ÑÓ
 dirpath1 = raw_input("please input the dir path1:") 
 dirpath2 = raw_input("please input the dir path2:") 
-
-
-
 def getfilelist(self):
     files_indir = []
     file_list = []
@@ -22,8 +17,6 @@ def getfilelist(self):
             os.path.join(root, file)
             files_indir.append(os.path.join(root,file) + '\n')
     
-    #print file_list
-#    print files_indir
     fo = open(self + "_files","w+")
     fo.writelines(file_list)
     fo.close()
